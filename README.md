@@ -1,30 +1,32 @@
 # Autoencoder Image Reconstruction
 
-An Autoencoder-based image reconstruction project using overhead aerial imagery containing objects such as airplanes and cars.
+Proyek rekonstruksi citra berbasis **Autoencoder** menggunakan citra udara (*overhead aerial imagery*) yang memuat objek seperti pesawat dan mobil.
 
 ## Overview
 
-This project explores the use of an Autoencoder to learn compact representations of overhead images and reconstruct them from their encoded representations.
+Proyek ini mengeksplorasi penggunaan Autoencoder untuk mempelajari representasi kompak (*latent representation*) dari citra udara dan merekonstruksi kembali citra tersebut dari representasi terkodekan.
 
-Different Autoencoder architectures and training configurations were experimented with to improve reconstruction quality. The models were evaluated using the **Structural Similarity Index Measure (SSIM)**.
+Beberapa arsitektur Autoencoder dan konfigurasi training diuji-cobakan untuk meningkatkan kualitas rekonstruksi. Model dievaluasi menggunakan **Structural Similarity Index Measure (SSIM)**.
 
 ## Dataset
 
-The project uses **overhead aerial imagery** containing objects such as:
+Proyek ini menggunakan **citra udara (overhead aerial imagery)** yang memuat objek seperti:
 
-- Airplanes
-- Cars
+- Pesawat (airplanes)
+- Mobil (cars)
 
-The images are used as input to the Autoencoder to learn compressed representations and reconstruct the original visual information.
+Citra-citra tersebut digunakan sebagai input Autoencoder untuk mempelajari representasi terkompresi dan merekonstruksi kembali informasi visual aslinya.
+
+> **Catatan:** Tambahkan detail dataset di sini, misalnya sumber dataset, jumlah gambar, resolusi, format file, dan tautan unduhan (jika publik).
 
 ## Objectives
 
-- Learn compact representations from overhead aerial images
-- Reconstruct images from their encoded representations
-- Experiment with different Autoencoder architectures
-- Perform hyperparameter tuning
-- Compare reconstruction quality using SSIM
-- Select the best-performing model
+- Mempelajari representasi kompak dari citra udara
+- Merekonstruksi citra dari representasi terkodekan (encoded)
+- Bereksperimen dengan berbagai arsitektur Autoencoder
+- Melakukan hyperparameter tuning
+- Membandingkan kualitas rekonstruksi menggunakan SSIM
+- Memilih model dengan performa terbaik
 
 ## Methodology
 
@@ -38,3 +40,78 @@ Latent Representation
    Decoder
       ↓
 Reconstructed Image
+```
+
+Alur kerja umum:
+
+1. **Preprocessing** — normalisasi, resize, dan augmentasi citra input.
+2. **Encoding** — encoder memetakan citra ke ruang laten berdimensi lebih rendah.
+3. **Decoding** — decoder merekonstruksi citra dari representasi laten.
+4. **Evaluasi** — kualitas rekonstruksi diukur menggunakan SSIM (dan opsional metrik lain seperti MSE/PSNR).
+5. **Perbandingan model** — beberapa arsitektur/konfigurasi dibandingkan untuk memilih model terbaik.
+
+## Project Structure
+
+```text
+.
+├── data/                # Dataset citra udara (train/val/test)
+├── notebooks/           # Notebook eksperimen dan eksplorasi
+├── src/                 # Kode sumber (model, training, evaluasi)
+│   ├── models.py
+│   ├── train.py
+│   └── evaluate.py
+├── results/             # Hasil rekonstruksi & log eksperimen
+├── requirements.txt
+└── README.md
+```
+
+> Sesuaikan struktur di atas dengan struktur folder proyek yang sebenarnya.
+
+## Requirements
+
+```text
+python>=3.9
+torch
+torchvision
+numpy
+matplotlib
+scikit-image
+```
+
+Instalasi dependensi:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+```bash
+# Training model
+python src/train.py --config configs/default.yaml
+
+# Evaluasi model (SSIM)
+python src/evaluate.py --checkpoint results/best_model.pth
+```
+
+> Sesuaikan perintah di atas dengan skrip dan argumen yang benar-benar tersedia di proyekmu.
+
+## Results
+
+| Model / Configuration | SSIM | Keterangan |
+|------------------------|------|------------|
+| Baseline Autoencoder   | -    | -          |
+| Deep Autoencoder       | -    | -          |
+| Convolutional AE       | -    | -          |
+
+> Isi tabel dengan hasil eksperimen aktual dan tambahkan contoh gambar asli vs hasil rekonstruksi jika memungkinkan.
+
+## Future Work
+
+- Eksplorasi arsitektur Variational Autoencoder (VAE)
+- Menambah variasi dan jumlah data untuk generalisasi lebih baik
+- Menguji metrik evaluasi tambahan (PSNR, LPIPS)
+
+## License
+
+Tambahkan informasi lisensi proyek di sini.
